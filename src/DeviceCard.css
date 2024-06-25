@@ -1,0 +1,43 @@
+.device-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background-color: white;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .device-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .device-header {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .device-info {
+    margin: 10px 0;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .device-info span {
+    font-weight: bold;
+  }
+  
+  .current-info {
+    color: #007bff; /* Blue for current */
+  }
+  
+  .vc-info {
+    color: #28a745; /* Green for V_C value */
+  }
+  
+  .state-info {
+    color: #dc3545; /* Red for current state */
+  }
+  
