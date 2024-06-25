@@ -24,6 +24,7 @@ const DeviceCard = ({ data }) => {
       <p className="device-info current-info"><span>Current:</span> {data.current} A</p>
       <p className="device-info vc-info"><span>V_C Value:</span> {data.vcValue}</p>
       <p className="device-info state-info"><span>Current State:</span> {currentState}</p>
+      <p className="device-info state-info"><span>Current power:</span> {data.power}</p>
     </div>
   );
 };
