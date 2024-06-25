@@ -29,7 +29,8 @@ const MQTTComponent = () => {
           deviceId: payload.deviceId,
           current: payload.current,
           vcValue: payload.vcValue,
-          currentState: payload.currentState
+          currentState: payload.currentState,
+          power: payload.power
         };
         
         setDevices(prevDevices => {
