@@ -15,7 +15,7 @@ const MQTTComponent = () => {
       clean: true,
     };
 
-    const client = mqtt.connect('ws://u5561ede.ala.dedicated.aws.emqxcloud.com:8083/mqtt', options);
+    const client = mqtt.connect('wss://u5561ede.ala.dedicated.aws.emqxcloud.com:8084/mqtt', options);
 
     client.on('connect', () => {
       console.log('Connected to MQTT broker');
