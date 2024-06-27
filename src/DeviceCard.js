@@ -12,10 +12,10 @@ const stateMapping = {
   8: 'START_STATE',
   9: 'PRE_STOP_STATE',
   10: 'STOP_STATE',
-  11: 'CLOSE_STATE'
+  11: 'CLOSE_STATE',
 };
 
-const DeviceCard = ({ data }) => {
+const DeviceCard = ({ data, onDelete }) => {
   const currentState = stateMapping[data.currentState] || 'Unknown State';
 
   return (
@@ -24,9 +24,9 @@ const DeviceCard = ({ data }) => {
       <p className="device-info current-info"><span>Current:</span> {data.current} A</p>
       <p className="device-info vc-info"><span>V_C Value:</span> {data.vcValue}</p>
       <p className="device-info state-info"><span>Current State:</span> {currentState}</p>
-      <p className="device-info state-info"><span>Current power:</span> {data.power} kw</p>
-      <p className="device-info state-info"><span>Energy when stop :</span> {data.energySend}</p>
-      
+      <p className="device-info state-info"><span>Current power:</span> {data.power} kW</p>
+      <p className="device-info state-info"><span>Energy when stop :</span> {data.energySend} kWh</p>
+      <button className="delete-button" onClick={onDelete}>Delete</button>
     </div>
   );
 };

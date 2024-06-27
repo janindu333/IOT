@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import mqtt from 'mqtt';
 import DeviceCard from './DeviceCard';
+import './MQTTComponent.css';
 
 const MQTTComponent = () => {
   const [devices, setDevices] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const options = {
@@ -31,9 +33,9 @@ const MQTTComponent = () => {
           vcValue: payload.vcValue,
           currentState: payload.currentState,
           power: payload.power,
-          energySend:payload.energySend
+          energySend: payload.energySend,
         };
-        
+
         setDevices(prevDevices => {
           const index = prevDevices.findIndex(device => device.deviceId === newDeviceData.deviceId);
           if (index > -1) {
@@ -54,11 +56,26 @@ const MQTTComponent = () => {
     };
   }, []);
 
+  const deleteDevice = (deviceId) => {
+    setDevices(prevDevices => prevDevices.filter(device => device.deviceId !== deviceId));
+  };
+
+  const filteredDevices = devices.filter(device => 
+    device.deviceId.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div>
+    <div className="parent-container">
       <h1>MQTT Devices</h1>
-      {devices.map(device => (
-        <DeviceCard key={device.deviceId} data={device} />
+      <input 
+        type="text" 
+        placeholder="Search by Device ID" 
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        className="search-input"
+      />
+      {filteredDevices.map(device => (
+        <DeviceCard key={device.deviceId} data={device} onDelete={() => deleteDevice(device.deviceId)} />
       ))}
     </div>
   );
